@@ -6,7 +6,7 @@ locals {
 
 # Create VPC module
 module "vpc" {
-  source                        = "git@github.com:Dappyplay4u/shopwise-infra.git//vpc/"
+  source                        = "https://github.com/Dappyplay4u/shopwise-infra.git//shopwise-terraform-module/vpc/"
   region                        = local.region
   project_name                  = local.project_name
   environment                   = local.environment
@@ -21,7 +21,7 @@ module "vpc" {
 
 # Create Natgate way Module
 module "nat_gateway" {
-  source                        = "git@github.com:Dappyplay4u/shopwise-infra.git//nat-gateway/"
+  source                        = "https://github.com/Dappyplay4u/shopwise-infra.git//shopwise-terraform-module/nat-gateway/"
   project_name                  = local.project_name
   environment                   = local.environment
   public_subnet_az1_id          = module.vpc.public_subnet_az1_id
@@ -36,7 +36,7 @@ module "nat_gateway" {
 
 # Create Security Group Module
 module "security_group" {
-  source                        = "git@github.com:Dappyplay4u/shopwise-infra.git//security-group/"
+  source                        = "https://github.com/Dappyplay4u/shopwise-infra.git//shopwise-terraform-module/security-group/"
   project_name                  = local.project_name
   environment                   = local.environment
   vpc_id                        = module.vpc.vpc_id
@@ -45,7 +45,7 @@ module "security_group" {
 
 # RDS Group module
 module "rds" {
-  source                        = "git@github.com:Dappyplay4u/shopwise-infra.git//rds/"
+  source                        = "https://github.com/Dappyplay4u/shopwise-infra.git//shopwise-terraform-module/rds/"
   project_name                  = local.project_name
   environment                   = local.environment
   private_data_subnet_az1_id    = module.vpc.private_data_subnet_az1_id
